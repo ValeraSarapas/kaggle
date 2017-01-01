@@ -14,20 +14,6 @@ CLASSES_BATCHES_FILENAME = MODELS_PATH + 'classes_train_data.bc'
 CLASSES_VAL_BATCHES_FILENAME = MODELS_PATH + 'classes_val_data.bc'
 
 
-def write_submission_csv(data, columns):
-    """
-    Write data according to the Kaggle submission format.
-    """
-    with open('submission.csv', 'wb') as f:
-        w = csv.writer(f)
-        w.writerow(columns)
-        for key in data.keys():
-            a = data[key]
-            if not isinstance(data[key], list):
-                a = [data[key]]
-            w.writerow([key[8:]] + a)
-
-
 def extract_images_and_classes(path, batch_size=1):
     """
     Utility function specialized in fetching images and

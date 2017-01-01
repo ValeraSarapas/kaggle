@@ -3,15 +3,27 @@ from __future__ import unicode_literals, division, print_function
 import numpy as np
 import re
 import os
+import csv
 
 from vgg16 import Vgg16
 from utils import save_array, load_array, get_data, get_batches, onehot
-from toolbox import write_submission_csv, extract_images_and_classes, MODELS_PATH
+from toolbox import extract_images_and_classes, MODELS_PATH
 from keras.models import Sequential
 from keras.layers import Input
 from keras.layers.core import Flatten, Dense, Dropout, Lambda
 from keras.optimizers import SGD, RMSprop
 from keras import backend as K
+
+
+def write_submission_csv(data, columns):
+    """
+    Write data according to the Kaggle submission format.
+    """
+    with open('submission.csv', 'wb') as f:
+        w = csv.writer(f)
+        w.writerow(columns)
+        for key in data.keys():
+            w.writerow([key, data[key]])
 
 
 def main():
