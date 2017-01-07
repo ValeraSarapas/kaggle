@@ -31,8 +31,8 @@ mv test/* test/unknown
 for d in $DIRS ; do
     mkdir valid/${d}
     cd train/${d}
-    shuf -zn500 -e *.jpg | xargs -0  mv -vt ../../valid/${d}
-    cd ${ROOT_DIR} 
+    shuf -zn1000 -e *.jpg | xargs -0  mv -vt ../../valid/${d}
+    cd ${ROOT_DIR}
 done
 
 # Populate "sample" folder
@@ -40,11 +40,11 @@ for d in $DIRS ; do
     mkdir sample/train/${d}
     mkdir sample/valid/${d}
     cd train/${d}
-    shuf -zn40 -e *.jpg | xargs -0  cp -vt ../../sample/train/${d}
+    shuf -zn100 -e *.jpg | xargs -0  cp -vt ../../sample/train/${d}
     cd ../../sample/train/${d}
-    shuf -zn10 -e *.jpg | xargs -0  mv -vt ../../sample/valid/${d}
-    cd ${ROOT_DIR} 
+    shuf -zn50 -e *.jpg | xargs -0  mv -vt ../../valid/${d}
+    cd ${ROOT_DIR}
 done
 cd test/unknown
-shuf -zn100 -e *.jpg | xargs -0  mv -vt ../../sample/test/unknown
-cd ${ROOT_DIR} 
+shuf -zn200 -e *.jpg | xargs -0  cp -vt ../../sample/test/unknown
+cd ${ROOT_DIR}
