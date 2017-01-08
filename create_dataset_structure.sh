@@ -16,8 +16,11 @@ mkdir sample/train
 mkdir sample/test
 mkdir sample/test/unknown
 mkdir sample/valid
+mkdir sample/models
+mkdir sample/files
 mkdir valid
 mkdir models
+mkdir files
 
 ROOT_DIR=$(pwd)
 cd ${ROOT_DIR}
